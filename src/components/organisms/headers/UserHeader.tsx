@@ -1,11 +1,12 @@
 import React from 'react'
+import { useCookies } from 'react-cookie'
+
+import { SubmitButton } from '../../atoms'
+
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
-import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,27 +18,36 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  font: {
+    fontWeight: 'bold',
+  },
 }))
 
 export const UserHeader: React.FC = () => {
   const classes = useStyles()
+  const [cookie, setCookie, removeCookie] = useCookies([
+    'token',
+    'position',
+    'fl_msg',
+  ])
+
+  const cookieReset = () => {
+    removeCookie('token')
+    removeCookie('position')
+    setCookie('fl_msg', 'ログアウトしました。', {})
+    window.location.href = './user_login'
+  }
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            News
+          <Typography variant="h5" className={classes.title}>
+            SeatApp
           </Typography>
-          <Button color="inherit">Login</Button>
+          <SubmitButton color="inherit" onClick={cookieReset}>
+            ログアウト
+          </SubmitButton>
         </Toolbar>
       </AppBar>
     </div>

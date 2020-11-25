@@ -1,13 +1,13 @@
 import React from 'react'
-import { UserHeader } from '../organisms/headers/UserHeader'
+import { LoginHeader } from '../organisms/headers/LoginHeader'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
-export const UserTemplate: React.FC = (props) => {
+export const LoginTemplate: React.FC = (props) => {
   const { children } = props
 
   return (
     <>
-      <UserHeader />
+      <LoginHeader />
       <CssBaseline />
       {children}
     </>

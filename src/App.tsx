@@ -1,8 +1,9 @@
 import React from 'react'
+import { CookiesProvider, useCookies } from 'react-cookie'
 import axios from 'axios'
 
 // templete
-import { UserTemplate } from './components/templates/UserTemplate'
+import { LoginTemplate, UserTemplate } from './components/templates'
 
 // router
 import {
@@ -10,8 +11,15 @@ import {
   Route,
   // Link
 } from 'react-router-dom'
-import { UserInfoPage } from './components/pages/users/UserInfoPage'
-import { UserNewPage } from './components/pages/users/UserNewPage'
+import { UserInfoPage, UserNewPage, UserLoginPage } from './components/pages'
+
+const Login = () => {
+  return (
+    <LoginTemplate>
+      <Route path="/user_login" component={UserLoginPage} />
+    </LoginTemplate>
+  )
+}
 
 const User = () => {
   return (
@@ -27,10 +35,21 @@ const App = () => {
   axios.defaults.headers = {
     'Content-Type': 'application/json',
   }
+
+  const [cookie] = useCookies(['token', 'position', 'fl_msg'])
+
   return (
-    <Router>
-      <User />
-    </Router>
+    <CookiesProvider>
+      <Router>
+        {cookie.position === 'user' ? (
+          <User />
+        ) : cookie.position === 'shop' ? (
+          <User />
+        ) : (
+          <Login />
+        )}
+      </Router>
+    </CookiesProvider>
   )
 }
 

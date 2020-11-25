@@ -8,3 +8,4 @@ export interface User {
 }
 
 export type UserInput = Omit<User, 'created_at' | 'upadted_at'>
+export type LoginInput = Pick<User, 'login_id' | 'password'>
