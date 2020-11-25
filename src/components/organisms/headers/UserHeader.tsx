@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
   font: {
     fontWeight: 'bold',
   },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+  },
 }))
 
 export const UserHeader: React.FC = () => {
@@ -40,7 +43,7 @@ export const UserHeader: React.FC = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h5" className={classes.title}>
             SeatApp
