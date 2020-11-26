@@ -1,10 +1,27 @@
 import { useState } from 'react'
-import { UserNew } from '../libs/api/user'
+import { UserNew, UserInfo, UserEdit } from '../libs/api/user'
+import { UserInput, UserSearch, initialUserState } from '../libs/model/User'
+
+export const useUserInfo = () => {
+  const [usersData, setUsersData] = useState(initialUserState)
+  const [userInfoEM, setUserInfoEM] = useState([])
+
+  const setUserInfo = async (data: UserSearch) => {
+    const res = await UserInfo(data)
+    if (res.data.users) {
+      setUserInfoEM([])
+      setUsersData(res.data.users)
+    } else {
+      setUserInfo(res.data.err_msg)
+    }
+  }
+  return { usersData, userInfoEM, setUserInfo }
+}
 
 export const useUserNew = () => {
   const [userNewEM, setUserNewEM] = useState([])
 
-  const setUserNew = async (data: any) => {
+  const setUserNew = async (data: UserInput) => {
     const res = await UserNew(data)
     if (res.data.fl_msg) {
       setUserNewEM([])
@@ -13,4 +30,18 @@ export const useUserNew = () => {
     }
   }
   return { userNewEM, setUserNew }
+}
+
+export const useUserEdit = () => {
+  const [userEditEM, setUserEM] = useState([])
+
+  const setUserEdit = async (data: UserInput) => {
+    const res = await UserEdit(data)
+    if (res.data.fl_msg) {
+      setUserEM([])
+    } else {
+      setUserEM(res.data.err_msg)
+    }
+  }
+  return { userEditEM, setUserEdit }
 }

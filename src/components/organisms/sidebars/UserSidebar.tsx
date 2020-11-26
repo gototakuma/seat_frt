@@ -1,20 +1,20 @@
 import React from 'react'
+import { useCookies } from 'react-cookie'
+import { useHistory } from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
 import List from '@material-ui/core/List'
-import Divider from '@material-ui/core/Divider'
 import Toolbar from '@material-ui/core/Toolbar'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
-import MailIcon from '@material-ui/icons/Mail'
+
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
+import PersonAddIcon from '@material-ui/icons/PersonAdd'
+import EditIcon from '@material-ui/icons/Edit'
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
   drawer: {
     width: 240,
     flexShrink: 0,
@@ -25,14 +25,27 @@ const useStyles = makeStyles((theme) => ({
   drawerContainer: {
     overflow: 'auto',
   },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
 }))
+
+const icons = [<PersonAddIcon />, <EditIcon />]
+
+const links = ['./user_new', './user_edit']
 
 export const UserSidebar: React.FC = () => {
   const classes = useStyles()
+  const history = useHistory()
+  const [cookie, setCookie, removeCookie] = useCookies([
+    'token',
+    'position',
+    'fl_msg',
+  ])
+
+  const logout = () => {
+    removeCookie('token')
+    removeCookie('position')
+    setCookie('fl_msg', 'ログアウトしました。', {})
+    window.location.href = './user_login'
+  }
 
   return (
     <>
@@ -46,25 +59,22 @@ export const UserSidebar: React.FC = () => {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
+            {['アカウント作成', 'アカウント編集'].map((text, index) => (
+              <ListItem
+                button
+                key={text}
+                onClick={() => history.push(links[index])}
+              >
+                <ListItemIcon>{icons[index]}</ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
             ))}
-          </List>
-          <Divider />
-          <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
+            <ListItem button onClick={logout}>
+              <ListItemIcon>
+                <ExitToAppIcon />
+              </ListItemIcon>
+              <ListItemText primary="ログアウト" />
+            </ListItem>
           </List>
         </div>
       </Drawer>

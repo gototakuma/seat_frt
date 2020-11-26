@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 
 import {
@@ -7,7 +7,8 @@ import {
   TextForm,
   SubmitButton,
 } from '../../atoms'
-import { useUserNew } from '../../../hooks/useUser'
+import { useEffectCustom } from '../../../hooks/useEffectCustom'
+import { useUserInfo, useUserEdit } from '../../../hooks/useUser'
 import { UserInput } from '../../../libs/model/User'
 
 import { makeStyles } from '@material-ui/core/styles'
@@ -24,22 +25,33 @@ const defaultValues = {
   password: '',
 }
 
-export const UserNewPage: React.FC = () => {
+export const UserEditPage: React.FC = () => {
   const classes = useStyles()
-  const { userNewEM, setUserNew } = useUserNew()
-  const { control, handleSubmit } = useForm({
+  const { usersData, setUserInfo } = useUserInfo()
+  const { userEditEM, setUserEdit } = useUserEdit()
+  const { control, handleSubmit, setValue } = useForm({
     defaultValues: defaultValues,
   })
 
   const onSubmit = (data: UserInput) => {
-    setUserNew(data)
+    data['id'] = usersData[0].id
+    setUserEdit(data)
   }
+
+  useEffectCustom(() => {
+    setValue('name', usersData[0].name)
+    setValue('login_id', usersData[0].login_id)
+  }, [usersData])
+
+  useEffect(() => {
+    setUserInfo({ jwt: true })
+  }, [])
 
   return (
     <div className={classes.container}>
       <PageContainer>
-        <h2>アカウント作成</h2>
-        {userNewEM?.map((err) => (
+        <h2>アカウント編集</h2>
+        {userEditEM?.map((err) => (
           <ErrorMessage key={err}>{err}</ErrorMessage>
         ))}
         <Controller as={TextForm} name="name" label="名前" control={control} />
