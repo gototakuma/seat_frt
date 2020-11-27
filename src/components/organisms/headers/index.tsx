@@ -1,2 +1,2 @@
 export * from './LoginHeader'
-export * from './UserHeader'
+export * from './CommonHeader'

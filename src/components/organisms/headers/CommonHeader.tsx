@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export const UserHeader: React.FC = () => {
+export const CommonHeader: React.FC = () => {
   const classes = useStyles()
 
   return (

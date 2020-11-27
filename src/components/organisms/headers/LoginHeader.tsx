@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import { SubmitButton } from '../../atoms'
 
@@ -18,6 +19,29 @@ const useStyles = makeStyles((theme) => ({
 
 export const LoginHeader: React.FC = () => {
   const classes = useStyles()
+  const history = useHistory()
+  const [loginData, setLoginData] = useState({
+    shop: false,
+    title: '店舗ログイン',
+  })
+
+  const changeLogin = () => {
+    if (loginData.shop) {
+      setLoginData({
+        ...loginData,
+        shop: false,
+        title: '店舗ログイン',
+      })
+      history.push('./user_login')
+    } else {
+      setLoginData({
+        ...loginData,
+        shop: true,
+        title: 'ログイン',
+      })
+      history.push('./shop_login')
+    }
+  }
 
   return (
     <div className={classes.root}>
@@ -26,7 +50,9 @@ export const LoginHeader: React.FC = () => {
           <Typography variant="h5" className={classes.title}>
             SeatApp
           </Typography>
-          <SubmitButton color="inherit">ログイン</SubmitButton>
+          <SubmitButton color="inherit" onClick={changeLogin}>
+            {loginData.title}
+          </SubmitButton>
         </Toolbar>
       </AppBar>
     </div>

@@ -3,7 +3,11 @@ import { CookiesProvider, useCookies } from 'react-cookie'
 import axios from 'axios'
 
 // templete
-import { LoginTemplate, UserTemplate } from './components/templates'
+import {
+  LoginTemplate,
+  ShopTemplate,
+  UserTemplate,
+} from './components/templates'
 
 // router
 import {
@@ -16,12 +20,14 @@ import {
   UserNewPage,
   UserLoginPage,
   UserEditPage,
+  ShopLoginPage,
 } from './components/pages'
 
 const Login = () => {
   return (
     <LoginTemplate>
       <Route path="/user_login" component={UserLoginPage} />
+      <Route path="/shop_login" component={ShopLoginPage} />
     </LoginTemplate>
   )
 }
@@ -33,6 +39,14 @@ const User = () => {
       <Route path="/user_new" component={UserNewPage} />
       <Route path="/user_edit" component={UserEditPage} />
     </UserTemplate>
+  )
+}
+
+const Shop = () => {
+  return (
+    <ShopTemplate>
+      <Route path="/user_new" component={UserNewPage} />
+    </ShopTemplate>
   )
 }
 
@@ -50,7 +64,7 @@ const App = () => {
         {cookie.position === 'user' ? (
           <User />
         ) : cookie.position === 'shop' ? (
-          <User />
+          <Shop />
         ) : (
           <Login />
         )}
