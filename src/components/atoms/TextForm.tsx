@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   },
   form: {
     maxWidth: 800,
-    minWidth: 200,
+    minWidth: 400,
   },
 })
 

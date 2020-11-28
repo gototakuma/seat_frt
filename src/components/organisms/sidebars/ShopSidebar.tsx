@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 const icons = [<AddIcon />, <EditIcon />]
 
-const links = ['./user_new', './user_edit']
+const links = ['./shop_new', './shop_edit']
 
 export const ShopSidebar: React.FC = () => {
   const classes = useStyles()

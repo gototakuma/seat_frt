@@ -21,6 +21,8 @@ import {
   UserLoginPage,
   UserEditPage,
   ShopLoginPage,
+  ShopNewPage,
+  ShopEditPage,
 } from './components/pages'
 
 const Login = () => {
@@ -45,7 +47,8 @@ const User = () => {
 const Shop = () => {
   return (
     <ShopTemplate>
-      <Route path="/user_new" component={UserNewPage} />
+      <Route path="/shop_new" component={ShopNewPage} />
+      <Route path="/shop_edit" component={ShopEditPage} />
     </ShopTemplate>
   )
 }
