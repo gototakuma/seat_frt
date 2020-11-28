@@ -1,4 +1,5 @@
 import React from 'react'
+import { FlashMessage } from './FlashMessage'
 import { CommonHeader } from '../organisms/headers/CommonHeader'
 import { UserSidebar } from '../organisms/sidebars/UserSidebar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -28,6 +29,7 @@ export const UserTemplate: React.FC = (props) => {
       <UserSidebar />
       <main className={classes.content}>
         <Toolbar />
+        <FlashMessage />
         {children}
       </main>
     </div>

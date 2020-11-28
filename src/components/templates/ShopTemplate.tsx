@@ -1,6 +1,8 @@
 import React from 'react'
 import { CommonHeader } from '../organisms/headers/CommonHeader'
 import { ShopSidebar } from '../organisms/sidebars/ShopSidebar'
+import { FlashMessage } from './FlashMessage'
+
 import Toolbar from '@material-ui/core/Toolbar'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles'
@@ -28,6 +30,7 @@ export const ShopTemplate: React.FC = (props) => {
       <ShopSidebar />
       <main className={classes.content}>
         <Toolbar />
+        <FlashMessage />
         {children}
       </main>
     </div>
