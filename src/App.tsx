@@ -23,6 +23,7 @@ import {
   ShopLoginPage,
   ShopNewPage,
   ShopEditPage,
+  SeatIndexPage,
 } from './components/pages'
 
 const Login = () => {
@@ -49,6 +50,7 @@ const Shop = () => {
     <ShopTemplate>
       <Route path="/shop_new" component={ShopNewPage} />
       <Route path="/shop_edit" component={ShopEditPage} />
+      <Route path="/seat_index" component={SeatIndexPage} />
     </ShopTemplate>
   )
 }

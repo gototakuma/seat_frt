@@ -1,4 +1,5 @@
 export * from './useEffectCustom'
 export * from './useLogin'
+export * from './useSeat'
 export * from './useShop'
 export * from './useUser'

@@ -13,6 +13,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
+import EventSeatIcon from '@material-ui/icons/EventSeat'
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -27,9 +28,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const icons = [<AddIcon />, <EditIcon />]
+const icons = [<AddIcon />, <EditIcon />, <EventSeatIcon />]
 
-const links = ['./shop_new', './shop_edit']
+const links = ['./shop_new', './shop_edit', './seat_index']
 
 export const ShopSidebar: React.FC = () => {
   const classes = useStyles()
@@ -59,7 +60,7 @@ export const ShopSidebar: React.FC = () => {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
-            {['店舗作成', '店舗編集'].map((text, index) => (
+            {['店舗作成', '店舗編集', '座席管理'].map((text, index) => (
               <ListItem
                 button
                 key={text}

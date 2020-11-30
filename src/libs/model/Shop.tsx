@@ -8,7 +8,6 @@ export interface Shop {
   updated_at: Date
 
   shop_login: boolean
-  jwt: boolean
   delete_flg: boolean
 }
 
@@ -17,7 +16,6 @@ export type ShopLoginInput = Pick<Shop, 'login_id' | 'password' | 'shop_login'>
 
 export type ShopSearch = {
   id?: number
-  jwt?: boolean
   name?: string
   address?: string
 }

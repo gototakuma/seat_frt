@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export const FlashMessage: React.FC<Props> = () => {
   const classes = useStyles()
   const [isMsg, setIsMsg] = useState(false)
-  const [cookie] = useCookies(['fl_msg'])
+  const [cookie, setCookie] = useCookies(['fl_msg'])
 
   useEffectCustom(() => {
     if (cookie.fl_msg) {
@@ -34,6 +34,7 @@ export const FlashMessage: React.FC<Props> = () => {
     if (isMsg) {
       setTimeout(() => {
         setIsMsg(false)
+        setCookie('fl_msg', '')
       }, 5000)
     }
   }, [isMsg])

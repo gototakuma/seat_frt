@@ -36,7 +36,6 @@ export const ShopEditPage: React.FC = () => {
 
   const onSubmit = (data: ShopInput) => {
     data['id'] = shopsData[0].id
-    data['jwt'] = true
     setShopEdit(data)
   }
 
@@ -47,7 +46,7 @@ export const ShopEditPage: React.FC = () => {
   }, [shopsData])
 
   useEffect(() => {
-    setShopInfo({ jwt: true })
+    setShopInfo({})
   }, [])
 
   return (
