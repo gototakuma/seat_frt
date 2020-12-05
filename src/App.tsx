@@ -33,6 +33,8 @@ const Login = () => {
     <LoginTemplate>
       <Route path="/user_login" component={UserLoginPage} />
       <Route path="/shop_login" component={ShopLoginPage} />
+      <Route path="/user_new" component={UserNewPage} />
+      <Route path="/shop_new" component={ShopNewPage} />
     </LoginTemplate>
   )
 }
@@ -41,7 +43,6 @@ const User = () => {
   return (
     <UserTemplate>
       <Route path="/users" component={UserInfoPage} />
-      <Route path="/user_new" component={UserNewPage} />
       <Route path="/user_edit" component={UserEditPage} />
       <Route path="/utilization_rate" component={UtilizationCheckPage} />
     </UserTemplate>
@@ -51,7 +52,6 @@ const User = () => {
 const Shop = () => {
   return (
     <ShopTemplate>
-      <Route path="/shop_new" component={ShopNewPage} />
       <Route path="/shop_edit" component={ShopEditPage} />
       <Route path="/seat_index" component={SeatIndexPage} />
       <Route path="/utilization_index" component={UtilizationIndexPage} />

@@ -28,9 +28,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const icons = [<PersonAddIcon />, <EditIcon />, <EventSeatIcon />]
-
-const links = ['./user_new', './user_edit', './utilization_rate']
+const icons = [<EventSeatIcon />, <EditIcon />]
+const names = ['利用状況', 'アカウント編集']
+const links = ['./utilization_rate', './user_edit']
 
 export const UserSidebar: React.FC = () => {
   const classes = useStyles()
@@ -60,18 +60,16 @@ export const UserSidebar: React.FC = () => {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
-            {['アカウント作成', 'アカウント編集', '利用状況'].map(
-              (text, index) => (
-                <ListItem
-                  button
-                  key={text}
-                  onClick={() => history.push(links[index])}
-                >
-                  <ListItemIcon>{icons[index]}</ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItem>
-              ),
-            )}
+            {names.map((text, index) => (
+              <ListItem
+                button
+                key={text}
+                onClick={() => history.push(links[index])}
+              >
+                <ListItemIcon>{icons[index]}</ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
             <ListItem button onClick={logout}>
               <ListItemIcon>
                 <ExitToAppIcon />

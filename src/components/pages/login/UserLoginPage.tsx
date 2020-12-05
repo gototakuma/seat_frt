@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { useForm, Controller } from 'react-hook-form'
 import { useCookies } from 'react-cookie'
 
@@ -17,6 +18,10 @@ const useStyles = makeStyles({
     left: '50%',
     transform: 'translate(-50%, -50%)',
   },
+  link: {
+    color: '#87CEFA',
+    cursor: 'pointer',
+  },
 })
 
 const defaultValues = {
@@ -26,6 +31,7 @@ const defaultValues = {
 
 export const UserLoginPage: React.FC = () => {
   const classes = useStyles()
+  const history = useHistory()
   const [cookie] = useCookies(['position'])
   const { control, handleSubmit } = useForm({
     defaultValues: defaultValues,
@@ -68,6 +74,9 @@ export const UserLoginPage: React.FC = () => {
       >
         ログイン
       </SubmitButton>
+      <p className={classes.link} onClick={() => history.push('/user_new')}>
+        アカウント登録
+      </p>
     </div>
   )
 }

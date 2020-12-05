@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { useForm, Controller } from 'react-hook-form'
 
 import {
@@ -16,6 +17,10 @@ const useStyles = makeStyles({
   container: {
     textAlign: 'center',
   },
+  link: {
+    color: '#87CEFA',
+    cursor: 'pointer',
+  },
 })
 
 const defaultValues = {
@@ -26,6 +31,7 @@ const defaultValues = {
 
 export const UserNewPage: React.FC = () => {
   const classes = useStyles()
+  const history = useHistory()
   const { userNewEM, setUserNew } = useUserNew()
   const { control, handleSubmit } = useForm({
     defaultValues: defaultValues,
@@ -63,6 +69,12 @@ export const UserNewPage: React.FC = () => {
         >
           保存
         </SubmitButton>
+        <p
+          className={classes.link}
+          onClick={() => history.push('./user_login')}
+        >
+          戻る
+        </p>
       </PageContainer>
     </div>
   )
