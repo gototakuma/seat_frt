@@ -24,6 +24,8 @@ import {
   ShopNewPage,
   ShopEditPage,
   SeatIndexPage,
+  UtilizationIndexPage,
+  UtilizationCheckPage,
 } from './components/pages'
 
 const Login = () => {
@@ -41,6 +43,7 @@ const User = () => {
       <Route path="/users" component={UserInfoPage} />
       <Route path="/user_new" component={UserNewPage} />
       <Route path="/user_edit" component={UserEditPage} />
+      <Route path="/utilization_rate" component={UtilizationCheckPage} />
     </UserTemplate>
   )
 }
@@ -51,6 +54,7 @@ const Shop = () => {
       <Route path="/shop_new" component={ShopNewPage} />
       <Route path="/shop_edit" component={ShopEditPage} />
       <Route path="/seat_index" component={SeatIndexPage} />
+      <Route path="/utilization_index" component={UtilizationIndexPage} />
     </ShopTemplate>
   )
 }

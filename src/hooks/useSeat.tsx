@@ -5,7 +5,12 @@ import { SeatEdit, SeatInfo, SeatNew } from '../libs/api/seat'
 import { SeatInput, SeatSearch } from '../libs/model/Seat'
 
 export const useSeatInfo = () => {
-  const [seatsData, setSeatsData] = useState([])
+  const [seatsData, setSeatsData] = useState({
+    seats: [],
+    utilization_seats: [],
+    rate: 0,
+    statistics_number: '',
+  })
   const [seatInfoEM, setSeatInfoEM] = useState([])
 
   const setSeatInfo = async (data: SeatSearch) => {
@@ -13,7 +18,25 @@ export const useSeatInfo = () => {
 
     if (res.data.seats) {
       setSeatInfoEM([])
-      setSeatsData(res.data.seats)
+      if (res.data.utilization_seats) {
+        if (res.data.rate) {
+          setSeatsData({
+            ...seatsData,
+            seats: res.data.seats,
+            utilization_seats: res.data.utilization_seats,
+            rate: res.data.rate,
+            statistics_number: res.data.statistics_number,
+          })
+        } else {
+          setSeatsData({
+            ...seatsData,
+            seats: res.data.seats,
+            utilization_seats: res.data.utilization_seats,
+          })
+        }
+      } else {
+        setSeatsData({ ...seatsData, seats: res.data.seats })
+      }
     } else {
       setSeatInfoEM(res.data.err_msg)
     }

@@ -15,7 +15,7 @@ export const SeatIndexPage: React.FC = () => {
     <>
       <SeatInfo
         seatInfoEM={seatInfoEM}
-        seatsData={seatsData}
+        seatsData={seatsData.seats}
         setChoice={setChoice}
         setSeatInfo={setSeatInfo}
       />

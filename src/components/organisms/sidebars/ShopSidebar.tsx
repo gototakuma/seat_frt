@@ -14,6 +14,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
 import EventSeatIcon from '@material-ui/icons/EventSeat'
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted'
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -28,9 +29,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const icons = [<AddIcon />, <EditIcon />, <EventSeatIcon />]
+const icons = [
+  <AddIcon />,
+  <EditIcon />,
+  <EventSeatIcon />,
+  <FormatListBulletedIcon />,
+]
 
-const links = ['./shop_new', './shop_edit', './seat_index']
+const links = [
+  './shop_new',
+  './shop_edit',
+  './seat_index',
+  './utilization_index',
+]
 
 export const ShopSidebar: React.FC = () => {
   const classes = useStyles()
@@ -60,16 +71,18 @@ export const ShopSidebar: React.FC = () => {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
-            {['店舗作成', '店舗編集', '座席管理'].map((text, index) => (
-              <ListItem
-                button
-                key={text}
-                onClick={() => history.push(links[index])}
-              >
-                <ListItemIcon>{icons[index]}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
+            {['店舗作成', '店舗編集', '座席管理', '利用一覧'].map(
+              (text, index) => (
+                <ListItem
+                  button
+                  key={text}
+                  onClick={() => history.push(links[index])}
+                >
+                  <ListItemIcon>{icons[index]}</ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>
+              ),
+            )}
             <ListItem button onClick={logout}>
               <ListItemIcon>
                 <ExitToAppIcon />
