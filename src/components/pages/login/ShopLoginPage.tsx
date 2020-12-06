@@ -45,7 +45,7 @@ export const ShopLoginPage: React.FC = () => {
 
   useEffectCustom(() => {
     if (cookie.position === 'shop') {
-      window.location.href = './shop_new'
+      window.location.href = './utilization_index'
     }
   }, [cookie])
 

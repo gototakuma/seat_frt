@@ -44,7 +44,7 @@ export const UserLoginPage: React.FC = () => {
 
   useEffectCustom(() => {
     if (cookie.position === 'user') {
-      window.location.href = './user_new'
+      window.location.href = './utilization_rate'
     }
   }, [cookie])
 

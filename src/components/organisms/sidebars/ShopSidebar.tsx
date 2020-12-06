@@ -14,6 +14,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import EditIcon from '@material-ui/icons/Edit'
 import EventSeatIcon from '@material-ui/icons/EventSeat'
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted'
+import NotificationsIcon from '@material-ui/icons/Notifications'
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -28,11 +29,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const icons = [<FormatListBulletedIcon />, <EventSeatIcon />, <EditIcon />]
+const icons = [
+  <FormatListBulletedIcon />,
+  <EventSeatIcon />,
+  <NotificationsIcon />,
+  <EditIcon />,
+]
 
-const names = ['利用一覧', '座席管理', '店舗編集']
+const names = ['利用一覧', '座席管理', 'お知らせ管理', '店舗編集']
 
-const links = ['./utilization_index', './seat_index', './shop_edit']
+const links = [
+  './utilization_index',
+  './seat_index',
+  './shop_notice',
+  './shop_edit',
+]
 
 export const ShopSidebar: React.FC = () => {
   const classes = useStyles()

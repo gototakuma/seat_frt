@@ -11,9 +11,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
-import PersonAddIcon from '@material-ui/icons/PersonAdd'
 import EditIcon from '@material-ui/icons/Edit'
 import EventSeatIcon from '@material-ui/icons/EventSeat'
+import NotificationsIcon from '@material-ui/icons/Notifications'
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -28,9 +28,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const icons = [<EventSeatIcon />, <EditIcon />]
-const names = ['利用状況', 'アカウント編集']
-const links = ['./utilization_rate', './user_edit']
+const icons = [<EventSeatIcon />, <NotificationsIcon />, <EditIcon />]
+const names = ['利用状況', 'お知らせ', 'アカウント編集']
+const links = ['./utilization_rate', './user_notice', './user_edit']
 
 export const UserSidebar: React.FC = () => {
   const classes = useStyles()

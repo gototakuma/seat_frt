@@ -1,6 +1,7 @@
 export * from './ErrorMessage'
 export * from './LineProgress'
 export * from './MUCollapase'
+export * from './MultilineForm'
 export * from './MUSelect'
 export * from './PageContainer'
 export * from './SubmitButton'

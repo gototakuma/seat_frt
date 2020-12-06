@@ -26,7 +26,10 @@ import {
   SeatIndexPage,
   UtilizationIndexPage,
   UtilizationCheckPage,
+  MessageUserPage,
+  MessageShopPage,
 } from './components/pages'
+import { Message } from '@material-ui/icons'
 
 const Login = () => {
   return (
@@ -45,6 +48,7 @@ const User = () => {
       <Route path="/users" component={UserInfoPage} />
       <Route path="/user_edit" component={UserEditPage} />
       <Route path="/utilization_rate" component={UtilizationCheckPage} />
+      <Route path="/user_notice" component={MessageUserPage} />
     </UserTemplate>
   )
 }
@@ -55,6 +59,7 @@ const Shop = () => {
       <Route path="/shop_edit" component={ShopEditPage} />
       <Route path="/seat_index" component={SeatIndexPage} />
       <Route path="/utilization_index" component={UtilizationIndexPage} />
+      <Route path="/shop_notice" component={MessageShopPage} />
     </ShopTemplate>
   )
 }
